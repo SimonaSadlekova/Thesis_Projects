@@ -1,0 +1,62 @@
+**********************************************************
+Instructions for better orientation in the appendix files:
+**********************************************************
+The appendix contains 4 main folders:
+The 'Polygons' folder: - contains ten folders (one for each polygon) with the results of two runs 
+			 of the algorithm (PF_1.mat and PF_2.mat) and the best solutions combined 
+			 from them in the file bestPF.mat
+                       - File names: - PF_x.mat => settings: agents = 300; 
+						   	     Iter = 100; 
+						   	     nVarsList = 3:3:30; 
+						   	     nP = 10 000
+                       		     - PFb_x.mat => settings: agents = 100; 
+							      Iter = 300; 
+							      nVarsList = 3:3:30; 
+							      nP = 10 000
+                       		     - PFc_x.mat => settings: agents = 300; 
+							      Iter = 100; 
+							      nVarsList = 9:3:30; 
+							      nP = 10 000
+                       		     - PFd_x.mat => settings: agents = 300; 
+							      Iter = 100; 
+							      nVarsList = 3:3:30; 
+							      nP = 200 000 (P1 only)
+                       		     - PFe_x.mat => settings: agents = 300; 
+							      Iter = 100; 
+							      nVarsList = 3:3:30; 
+							      nP = 10 000
+						 => computing the fitness function with the sum 
+						    of overlaps instead of uniting
+                       		     - bestPFy => combined best solutions (input data for the GUI) 
+The 'probTest' folder: - each benchmark problem has its own folder which contains the results 
+			 of testing the effect of the probability parameter setting
+                       - Folder names: - prob_i=40_a=50    => settings: Iter = 40; 
+								        agents = 50
+                                       - prob_i=100_a=200  => settings: Iter = 100; 
+								        agents = 200
+                                       - prob_i=100_a=1000 => settings: Iter = 100; 
+									agents = 1000
+The 'statisticTest' folder: - contains ten folders (one for each polygon) with the results of individual 
+			      runs using a fixed number of dimensions (it means: PF_1 is the setting 
+			      of using one circle, PF_2 two circles, etc.)
+                            - File names: - PF_(1-10) => settings: Iter = 100; 
+								   agents = 300; 
+								   nVarsList = 3:3:30
+                                          - PF_comb => combined Pareto-front from files PF_1 to PF_10	
+The 'VNDFNDCompare' folder: - contains ten folders (one for each polygon) with the results of comparing 
+			       the Pareto-front using a fixed number of dimensions and the Pareto-front 
+			       using a variable number of dimensions
+                             - File names: - bestPF_VND => better results were achieved by the algorithm 
+							   using VNDMOPSO
+                                           - bestPF_fixed => the algorithm had better results when using 
+							     MOPSO with a fixed number of dimensions
+                                           - comparePF_3plots => a picture showing how many solutions from 
+								 which Pareto-front were selected into 
+								 the common
+Several Matlab functions and scripts:
+VNDMOPSO => function for implementing the VNDMOPSO algorithm
+main.m => script for setting parameters and running the algorithm for benchmark problems
+mainPolygon.m => script for setting parameters and running algorithm for polygons
+GUIforTumorCoverage.m => to run the GUI to visualize the optimization results
+polygonFitness.m => for calculating the fitness function
+compareResults => for comparing results from two runs of the algorithm and for comparing VND vs. FND MOPSO
